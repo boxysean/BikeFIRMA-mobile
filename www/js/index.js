@@ -16,6 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var backend = 'http://localhost:3000';
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -35,15 +38,56 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+
+    updateLocation: function (latitude, longitude) {
+        var bikename = $('#bikename').val();
+
+        var req = $.ajax({
+            url: backend + '/bikes/' + bikename + '/update',
+            type: 'post',
+            data: { 'latitude': latitude, 'longitude': longitude }
+        });
+
+        req.done(function (res, textStatus, jqXHR) {
+            console.log("success! " + res);
+        });
+
+        req.fail(function (jqXHR, textStatus, errorThrown) {
+            console.error("error! " + errorThrown);
+        });
+
+        $('#location').val(latitude + ', ' + longitude);
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        console.log('yep');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        (function (app) {
+            setInterval(function () {
+                var onSuccess = function (position) {
+                    app.updateLocation(position.coords.latitude, position.coords.longitude);
+                };
 
-        console.log('Received Event: ' + id);
+                var onError = function (error) {
+                    app.updateLocation(0, 0);
+                };
+
+                if ($('#sendlocation').prop('checked') && $('#bikename').val().length > 0) {
+                    // console.log('checking location...');
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                }
+            }, 2000);
+        })(this);
+    },
+
+    onSuccess: function(position) {
+        
+    },
+
+    // onError Callback receives a PositionError object
+    //
+    onError: function(error) {
     }
+
 };
