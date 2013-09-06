@@ -17,12 +17,17 @@
  * under the License.
  */
 
-var backend = 'http://localhost:3000';
-
 var app = {
+    positionQueue: [],
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+
+        $('#server').val('http://boxysean.com:3000');
+        // $('#server').val('http://localhost:3000');
+        $('#bikename').val('Test');
+        $('#sendlocation').prop('checked', true);
     },
     // Bind Event Listeners
     //
@@ -39,38 +44,66 @@ var app = {
         app.receivedEvent('deviceready');
     },
 
-    updateLocation: function (latitude, longitude) {
-        var bikename = $('#bikename').val();
+    hasConnection: function() {
+        if (!navigator.connection) {
+            return true; // running from in-browser
+        }
 
-        var req = $.ajax({
-            url: backend + '/bikes/' + bikename + '/update',
-            type: 'post',
-            data: { 'latitude': latitude, 'longitude': longitude }
+        switch (navigator.connection.type) {
+            case Connection.ETHERNET:
+            case Connection.WIFI:
+            case Connection.CELL_2G:
+            case Connection.CELL_3G:
+            case Connection.CELL_4G:
+            case Connection.CELL:
+                return true;
+
+            default:
+                return false;
+        }
+    },
+
+    updatePosition: function (latitude, longitude) {
+        var timestamp = $.now();
+
+        this.positionQueue.push({
+            latitude: latitude,
+            longitude: longitude,
+            timestamp: timestamp
         });
 
-        req.done(function (res, textStatus, jqXHR) {
-            console.log("success! " + res);
-        });
+        if (this.hasConnection()) {
+            var bikename = $('#bikename').val(),
+                server = $('#server').val();
 
-        req.fail(function (jqXHR, textStatus, errorThrown) {
-            console.error("error! " + errorThrown);
-        });
+            var req = $.ajax({
+                url: server + '/bikes/' + bikename + '/position',
+                type: 'post',
+                data: { positions: this.positionQueue },
+                success: function (res, textStatus, jqXHR) {
+                    $('#lastupdate').val($.now());
+                },
+                fail: function (jqXHR, textStatus, errorThrown) {
+                    console.log("error: " + textStatus);
+                }
+            });
+
+            this.positionQueue = [];
+        }
 
         $('#location').val(latitude + ', ' + longitude);
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        console.log('yep');
-
         (function (app) {
             setInterval(function () {
                 var onSuccess = function (position) {
-                    app.updateLocation(position.coords.latitude, position.coords.longitude);
+                    app.updatePosition(position.coords.latitude, position.coords.longitude);
                 };
 
                 var onError = function (error) {
-                    app.updateLocation(0, 0);
+                    app.updatePosition(90 - (Math.random() * 180), 180 - (Math.random() * 360));
                 };
 
                 if ($('#sendlocation').prop('checked') && $('#bikename').val().length > 0) {
@@ -79,15 +112,5 @@ var app = {
                 }
             }, 2000);
         })(this);
-    },
-
-    onSuccess: function(position) {
-        
-    },
-
-    // onError Callback receives a PositionError object
-    //
-    onError: function(error) {
     }
-
 };
