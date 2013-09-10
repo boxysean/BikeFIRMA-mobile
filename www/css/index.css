@@ -86,4 +86,130 @@ body {
     margin-bottom: 10px;
 }
 
+/*** FOR ALL APP PAGES ***/
 
+.base {
+    background-color: #2a2b3e;
+    height: 100%;
+}
+
+.page-wrapper {
+    width: 320px;
+    height: 480px;
+}
+
+.bf-header {
+    background-position: center top;
+    background-image: url('../img/assets/TOP_BAR.png');
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    height: 68px;
+    border-width: 0px;
+}
+
+.bf-footer {
+    text-align: center;
+    top: 100px;
+    width: 100%;
+}
+
+.bf-content {
+    text-align: center;
+    padding: 0 32px;
+}
+
+.bf-setting-button {
+    background-image: url('../img/assets/SETTING_BT.png');
+    background-repeat: no-repeat;
+    position: absolute !important;
+    left: 273px !important;
+    top: 16px !important;
+    width: 31px;
+    height: 31px;
+    display: block;
+}
+
+.bf-setting-button:active {
+    background-image: url('../img/assets/SETTING_BT-PRESSED.png');
+}
+
+.bf-back-button {
+    display: block;
+    position: absolute !important;
+    left: 18px !important;
+    top: 16px !important;
+    background-image: url('../img/assets/BACK.png');
+    width: 29px;
+    height: 29px;
+}
+
+.bf-back-button:active {
+    background-image: url('../img/assets/BACK_pressed.png');
+}
+
+.bf-button {
+    padding: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.bf-bg1 {
+    background-image: url('../img/assets/BG.png');
+}
+
+.bf-bg2 {
+    background-image: url('../img/assets/BG__4.png');
+}
+
+.bf-bg-green {
+    background-image: url('../img/assets/BG__1.png');
+}
+
+.bf-bg-red {
+    background-image: url('../img/assets/BG__2.png');
+}
+
+.bf-bg-blue {
+    background-image: url('../img/assets/BG__3.png');
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+}
+
+
+
+/*** INTRO PAGE ***/
+
+#intro {
+    display:table;
+}
+
+.splash {
+    background-color: #2a2b3e;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*** LOGIN PAGE ***/
+
+#bf-button-login {
+    background-image: url('../img/assets/CHECK_IN.png');
+    width: 252px;
+    height: 43px;
+}
+
+#bf-button-login:active {
+    background-image: url('../img/assets/CHECK_IN_PRESSED.png');
+}
+
+/*** SIGNUP PAGE ***/
+
+#bf-button-signup {
+    background-image: url('../img/assets/SIGN-UP__1.png');
+    width: 252px;
+    height: 43px;
+}
+
+#bf-button-signup:active {
+    background-image: url('../img/assets/SIGN-UP_pressed.png');
+}

@@ -25,9 +25,43 @@ var app = {
         this.bindEvents();
 
         $('#server').val('http://boxysean.com:3000');
-        // $('#server').val('http://localhost:3000');
         $('#bikename').val('Test');
         $('#sendlocation').prop('checked', true);
+
+        $('.bf-back-button').click(function () {
+            parent.history.back();
+            return false;
+        });
+
+        $('#bf-button-signup').click(function() {
+            var url = 'http://localhost:3000/signup';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: $('#bf-form-signup').serialize(),
+                success: function (data) {
+                    alert("signed up!");
+                }
+            })
+
+            return false;
+        });
+
+        $('#bf-button-login').click(function() {
+            var url = 'http://localhost:3000/login';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: $('#bf-form-login').serialize(),
+                success: function (data) {
+                    alert("logged in!");
+                }
+            })
+
+            return false;
+        });
     },
     // Bind Event Listeners
     //
@@ -35,12 +69,15 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        // app.receivedEvent('deviceready'); // ugly hack!
+        // console.log('ugly hack!');
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        console.log('device ready!');
         app.receivedEvent('deviceready');
     },
 
@@ -64,6 +101,7 @@ var app = {
     },
 
     updatePosition: function (latitude, longitude) {
+        console.log("update! " + latitude + " " + longitude);
         var timestamp = $.now();
 
         this.positionQueue.push({
@@ -97,18 +135,22 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         (function (app) {
+            console.log('setting interval');
             setInterval(function () {
+                // console.log("interval!");
+
                 var onSuccess = function (position) {
                     app.updatePosition(position.coords.latitude, position.coords.longitude);
                 };
 
                 var onError = function (error) {
-                    app.updatePosition(90 - (Math.random() * 180), 180 - (Math.random() * 360));
+                    // app.updatePosition(90 - (Math.random() * 180), 180 - (Math.random() * 360));
+                    console.log("error finding position " + error);
                 };
 
                 if ($('#sendlocation').prop('checked') && $('#bikename').val().length > 0) {
                     // console.log('checking location...');
-                    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError, { timeout: 10000 });
                 }
             }, 2000);
         })(this);

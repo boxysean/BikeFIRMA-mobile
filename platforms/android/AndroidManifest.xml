@@ -10,8 +10,13 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="18" />
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="16" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.wifi" />
+    <uses-feature android:name="android.hardware.location" />
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.location.network" />
 </manifest>
