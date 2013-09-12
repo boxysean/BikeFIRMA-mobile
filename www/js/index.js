@@ -199,11 +199,11 @@ var app = {
                     url: url,
                     jsonpCallback: 'jsonpCallback',
                     success: function (data) {
-                        console.log('success!');
+                        alert('success!');
                         console.log(data);
                     },
                     error: function() {
-                        console.log('error!');
+                        alert('error!');
                     }
                 });
             }
