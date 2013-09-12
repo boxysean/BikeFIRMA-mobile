@@ -17,7 +17,8 @@
  * under the License.
  */
 
-var host = 'http://boxysean.com:3000';
+// var host = 'http://boxysean.com:3000';
+var host = 'http://localhost:3000';
 
 var app = {
     positionQueue: [],
@@ -100,17 +101,27 @@ var app = {
             var url = host + '/signup';
             var username = $('#bf-signup-username').val();
 
+            var jsonpCallback = function (data) {
+                console.log("jsonpCallback");
+                console.log(data);
+            };
+
             $.ajax({
-                type: 'POST',
-                dataType: 'jsonp',
                 url: url,
+                dataType: 'jsonp',
+                timeout: 5000,
                 data: $('#bf-form-signup').serialize(),
+                jsonpCallback: 'jsonpCallback',
                 success: function (data) {
-                    alert("signed up!");
-                    _this.setUser(username);
-                    $('#bf-signup-email').val("");
-                    $('#bf-signup-username').val("");
-                    $('#bf-signup-password').val("");
+                    if (data && 'error' in data) {
+                        alert('could not sign up');
+                    } else {
+                        alert("signed up!");
+                        _this.setUser(username);
+                        $('#bf-signup-email').val("");
+                        $('#bf-signup-username').val("");
+                        $('#bf-signup-password').val("");
+                    }
                 },
                 error: function (data) {
                     alert('could not sign up');
