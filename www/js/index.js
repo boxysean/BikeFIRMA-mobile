@@ -17,51 +17,197 @@
  * under the License.
  */
 
+var host = 'http://boxysean.com:3000';
+
 var app = {
     positionQueue: [],
+    checkinIdx: 0,
+    checkinImages: ['img/assets/CHECK_IN_0.png', 'img/assets/CHECK_IN_1.png', 'img/assets/CHECK_IN_2.png', 'img/assets/CHECK_IN_3.png'],
+    currentUser: "",
+
+    resetUser: function(user) {
+        this.currentUser = undefined;
+    },
+
+    setUser: function(user) {
+        $('.bf-username').html(user);
+        this.currentUser = user;
+    },
+
+    setTotalColumns: function(distance) {
+        $('.bf-total-column-1').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-total-column-2').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-total-column-3').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-total-column-4').html(distance % 10);
+    },
+
+    setRideColumns: function(distance) {
+        $('.bf-ride-column-1').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-ride-column-2').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-ride-column-3').html(distance % 10);
+        distance = Math.floor(distance / 10);
+        $('.bf-ride-column-4').html(distance % 10);
+    },
+
+    setConnectedToTwitter: function(connected) {
+        if (connected) {
+            $('.bf-twitter-connect-button')
+                .css('background-image', 'url(img/assets/TWITTER_connected.png)')
+                .attr('connected', true)
+                .attr('href', '#');
+
+            $('.bf-twitter-button')
+                .css('background-image', 'url(img/assets/TWITTER_shared.png)')
+                .attr('connected', true)
+        } else {
+            $('.bf-twitter-connect-button')
+                .css('background-image', 'url(img/assets/TWITTER.png)')
+                .attr('connected', false)
+                .attr('href', host + '/connect/twitter');
+
+            $('.bf-twitter-button')
+                .css('background-image', 'url(img/assets/TWITTER__1.png)')
+                .attr('connected', false);
+        }
+    },
 
     // Application Constructor
     initialize: function() {
+        var _this = this;
+
         this.bindEvents();
 
         $('#server').val('http://boxysean.com:3000');
         $('#bikename').val('Test');
         $('#sendlocation').prop('checked', true);
 
-        $('.bf-back-button').click(function () {
-            parent.history.back();
+        $('.bf-back-button, .bf-back-action').click(function () {
+            var obj = $(this);
+            var nTimes = $(this).attr("pages-back") || 1;
+            parent.history.go(-nTimes);
             return false;
         });
 
+        $('.bf-setting-button').click(function() {
+        });
+
         $('#bf-button-signup').click(function() {
-            var url = 'http://localhost:3000/signup';
+            var url = host + '/signup';
+            var username = $('#bf-signup-username').val();
 
             $.ajax({
                 type: 'POST',
+                dataType: 'jsonp',
                 url: url,
                 data: $('#bf-form-signup').serialize(),
                 success: function (data) {
                     alert("signed up!");
+                    _this.setUser(username);
+                    $('#bf-signup-email').val("");
+                    $('#bf-signup-username').val("");
+                    $('#bf-signup-password').val("");
+                },
+                error: function (data) {
+                    alert('could not sign up');
                 }
-            })
+            });
 
             return false;
         });
 
         $('#bf-button-login').click(function() {
-            var url = 'http://localhost:3000/login';
+            var url = host + '/login';
+            var username = $('#bf-login-username').val();
+
+            var jsonpCallback = function (data) {
+                console.log("jsonpCallback");
+                console.log(data);
+            };
 
             $.ajax({
-                type: 'POST',
                 url: url,
+                timeout: 5000,
+                dataType: 'jsonp',
                 data: $('#bf-form-login').serialize(),
+                jsonpCallback: 'jsonpCallback',
                 success: function (data) {
-                    alert("logged in!");
+                    if (data && 'error' in data) {
+                        window.location.href = '#logginginerror';
+                    } else {
+                        window.location.href = '#ride';
+                        _this.setUser(username);
+                        $('#bf-login-username').val("");
+                        $('#bf-login-password').val("");
+
+                        if (data && 'twitter' in data) {
+                            _this.setConnectedToTwitter(true);
+                        } else {
+                            _this.setConnectedToTwitter(false);
+                        }
+                    }
+                },
+                error: function () {
+                    window.location.href = '#logginginerrornoconnection';
                 }
-            })
+            });
+
+            window.location.href = '#loggingin';
 
             return false;
         });
+
+        $('.bf-logout-button').click(function() {
+            var url = host + '/logout';
+            var username = $('#bf-login-username').val();
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'jsonp',
+                url: url,
+                data: $('#bf-form-login').serialize()
+            });
+
+            window.location.href = '#intro';
+            _this.resetUser();
+
+            return false;
+        });
+
+        $('.bf-twitter-button').click(function() {
+            if ($(this).attr('connected')) {
+                var url = host + '/connect/twitter/tweet';
+
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    url: url,
+                    jsonpCallback: 'jsonpCallback',
+                    success: function (data) {
+                        console.log('success!');
+                        console.log(data);
+                    },
+                    error: function() {
+                        console.log('error!');
+                    }
+                });
+            }
+
+            return false;
+        });
+
+        // Animated JPG -- checkin graphic
+
+        setInterval(function () {
+            $('#checkin-graphic').attr('src', _this.checkinImages[_this.checkinIdx++]);
+            if (_this.checkinIdx >= _this.checkinImages.length) {
+                _this.checkinIdx = 0;
+            }
+        }, 700);
     },
     // Bind Event Listeners
     //
@@ -135,7 +281,6 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         (function (app) {
-            console.log('setting interval');
             setInterval(function () {
                 // console.log("interval!");
 

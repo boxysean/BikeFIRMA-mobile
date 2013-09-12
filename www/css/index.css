@@ -115,7 +115,104 @@ body {
 
 .bf-content {
     text-align: center;
-    padding: 0 32px;
+    padding: 0 13px;
+}
+
+.bf-form {
+    padding: 0 21px;
+}
+
+.bf-bg1 {
+    background-image: url('../img/assets/BG.png');
+}
+
+.bf-bg2 {
+    background-image: url('../img/assets/BG__4.png');
+}
+
+.bf-bg-green {
+    background-image: url('../img/assets/BG__1.png');
+}
+
+.bf-bg-red {
+    background-image: url('../img/assets/BG__2.png');
+}
+
+.bf-bg-blue {
+    background-image: url('../img/assets/BG__3.png');
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+}
+
+
+
+
+/*** LOGIN PAGE ***/
+
+#bf-button-login {
+    background-image: url('../img/assets/CHECK_IN.png');
+    width: 252px;
+    height: 43px;
+}
+
+#bf-button-login:active {
+    background-image: url('../img/assets/CHECK_IN_PRESSED.png');
+}
+
+/*** SIGNUP PAGE ***/
+
+#bf-button-signup {
+    background-image: url('../img/assets/SIGN-UP__1.png');
+    width: 252px;
+    height: 43px;
+}
+
+#bf-button-signup:active {
+    background-image: url('../img/assets/SIGN-UP_pressed.png');
+}
+
+
+/*** BUTTONS ***/
+
+.bf-twitter-button {
+    background-image: url('../img/assets/TWITTER__1.png');
+    background-repeat: no-repeat;
+    width: 221px;
+    height: 37px;
+    display: block;
+    margin-left: 37px;
+    margin-bottom: 10px;
+}
+
+.bf-twitter-button:active {
+    background-image: url('../img/assets/TWITTER_pressed.png');
+}
+
+.bf-facebook-button {
+    background-image: url('../img/assets/FACEBOOK_.png');
+    background-repeat: no-repeat;
+    width: 221px;
+    height: 37px;
+    display: block;
+    margin-left: 37px;
+    margin-bottom: 10px;
+}
+
+.bf-facebook-button:active {
+    background-image: url('../img/assets/FACEBOOK_pressed__1.png');
+}
+
+.bf-cancel-button {
+    background-image: url('../img/assets/CANCEL.png');
+    background-repeat: no-repeat;
+    width: 221px;
+    height: 37px;
+    display: block;
+    margin-left: 37px;
+}
+
+.bf-cancel-button:active {
+    background-image: url('../img/assets/CANCEL_pressed.png');
 }
 
 .bf-setting-button {
@@ -147,69 +244,160 @@ body {
     background-image: url('../img/assets/BACK_pressed.png');
 }
 
+.bf-total-button {
+    background-image: url('../img/assets/TOTAL_KM_.png');
+    background-repeat: no-repeat;
+    width: 135px;
+    height: 38px;
+    display: block;
+    margin-left: 0px;
+}
+
+.bf-total-button:active {
+    background-image: url('../img/assets/TOTAL_KM_active.png');
+}
+
+.bf-yourride-button {
+    background-image: url('../img/assets/YOUR_RIDE.png');
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 38px;
+    display: block;
+    margin-left: 5px;
+}
+
+.bf-yourride-button:active {
+    background-image: url('../img/assets/YOUR_RIDE_ACTIVE.png');
+}
+
+.bf-share-button {
+    background-image: url('../img/assets/SHARE.png');
+    background-repeat: no-repeat;
+    width: 277px;
+    height: 39px;
+    display: block;
+    margin-left: 5px;
+}
+
+.bf-share-button:active {
+    background-image: url('../img/assets/SHARE_pressed.png');
+}
+
+.bf-logout-button {
+    background-image: url('../img/assets/CHECK-OUT.png');
+    background-repeat: no-repeat;
+    width: 277px;
+    height: 38px;
+    display: block;
+    margin-left: 5px;
+}
+
+.bf-logout-button:active {
+    background-image: url('../img/assets/CHECK-OUT_pressed.png');
+}
+
+.bf-twitter-connect-button {
+    background-image: url('../img/assets/TWITTER.png');
+    background-repeat: no-repeat;
+    width: 232px;
+    height: 40px;
+    display: block;
+    margin-left: 29px;
+    margin-top: 10px;
+}
+
+.bf-twitter-connect-button:active {
+    background-image: url('../img/assets/TWITTER_connected__1.png');
+}
+
+.bf-facebook-connect-button {
+    background-image: url('../img/assets/FACEBOOK.png');
+    background-repeat: no-repeat;
+    width: 232px;
+    height: 39px;
+    display: block;
+    margin-left: 29px;
+    margin-top: 10px;
+}
+
+.bf-facebook-connect-button:active {
+    background-image: url('../img/assets/FACEBOOK_pressed.png');
+}
+
+.bf-terms-of-use-button {
+    background-image: url('../img/assets/TERMS__1.png');
+    background-repeat: no-repeat;
+    width: 232px;
+    height: 40px;
+    display: block;
+    margin-left: 29px;
+    margin-top: 10px;
+}
+
+.bf-terms-of-use-button:active {
+    background-image: url('../img/assets/TERMS_pressed.png');
+}
+
+.bf-about-button {
+    background-image: url('../img/assets/ABOUT_.png');
+    background-repeat: no-repeat;
+    width: 232px;
+    height: 39px;
+    display: block;
+    margin-left: 29px;
+    margin-top: 80px;
+}
+
+.bf-about-button:active {
+    background-image: url('../img/assets/ABOUT_pressed.png');
+}
+
 .bf-button {
     padding: 0;
     border-width: 0;
     background-color: rgba(0, 0, 0, 0);
 }
 
-.bf-bg1 {
-    background-image: url('../img/assets/BG.png');
-}
 
-.bf-bg2 {
-    background-image: url('../img/assets/BG__4.png');
-}
+/*** NUMBERS ***/
 
-.bf-bg-green {
-    background-image: url('../img/assets/BG__1.png');
-}
-
-.bf-bg-red {
-    background-image: url('../img/assets/BG__2.png');
-}
-
-.bf-bg-blue {
-    background-image: url('../img/assets/BG__3.png');
-    color: #fff;
-    text-shadow: 0 1px 0 #333;
-}
-
-
-
-/*** INTRO PAGE ***/
-
-#intro {
-    display:table;
-}
-
-.splash {
-    background-color: #2a2b3e;
+.bf-total-column-1, .bf-total-column-2, .bf-total-column-3, .bf-total-column-4,
+.bf-ride-column-1, .bf-ride-column-2, .bf-ride-column-3, .bf-ride-column-4 {
     text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    text-shadow: 0 0 0 #FFFFFF;
+    color: #FFF;
+    font-size: 36pt;
+    padding-top: 10px;
 }
 
-/*** LOGIN PAGE ***/
-
-#bf-button-login {
-    background-image: url('../img/assets/CHECK_IN.png');
-    width: 252px;
-    height: 43px;
+.bf-total-column-1, .bf-ride-column-1 {
+    position: absolute;
+    left: 20px;
+    top: 169px;
+    width: 69px;
+    height: 74px;
 }
 
-#bf-button-login:active {
-    background-image: url('../img/assets/CHECK_IN_PRESSED.png');
+.bf-total-column-2, .bf-ride-column-2 {
+    position: absolute;
+    left: 90px;
+    top: 169px;
+    width: 69px;
+    height: 74px;
 }
 
-/*** SIGNUP PAGE ***/
-
-#bf-button-signup {
-    background-image: url('../img/assets/SIGN-UP__1.png');
-    width: 252px;
-    height: 43px;
+.bf-total-column-3, .bf-ride-column-3 {
+    position: absolute;
+    left: 160px;
+    top: 169px;
+    width: 69px;
+    height: 74px;
 }
 
-#bf-button-signup:active {
-    background-image: url('../img/assets/SIGN-UP_pressed.png');
+.bf-total-column-4, .bf-ride-column-4 {
+    position: absolute;
+    left: 230px;
+    top: 169px;
+    width: 69px;
+    height: 74px;
 }

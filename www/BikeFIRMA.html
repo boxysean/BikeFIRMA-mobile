@@ -18,7 +18,7 @@
 <!-- Start of first page: #intro -->
 <div data-role="page" id="intro" class="base">
 
-	<div class="splash centered">
+	<div class="splash">
 		<a href="#login"><img src="img/assets/INTRO.png" /></a>
 	</div>
 	
@@ -31,13 +31,13 @@
 	<div class="page-wrapper bf-bg1">
 
 		<div data-role="header" class="bf-header">
-			<a href="#" class="bf-setting-button" data-role="none" /></a>
+			<a href="#menu" class="bf-setting-button" data-role="none" /></a>
 		</div><!-- /header -->
 
 		<div data-role="content" class="bf-content">
-			<form id="bf-form-login" method="post">
-				<input class="bf-input-text" type="text" name="username" id="username" value="" placeholder="Nome do usuário" />
-				<input class="bf-input-text" type="password" name="password" id="password" value="" placeholder="Senha" />
+			<form id="bf-form-login" class="bf-form" method="post">
+				<input class="bf-input-text" type="text" name="username" id="bf-login-username" value="" placeholder="Nome do usuário" />
+				<input class="bf-input-text" type="password" name="password" id="bf-login-password" value="" placeholder="Senha" />
 				<button type="submit" id="bf-button-login" class="bf-button" data-role="none"></button>
 			</form>
 
@@ -73,14 +73,14 @@
 
 		<div data-role="header" class="bf-header">
 			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse"></a>
-			<a href="#" class="bf-setting-button" data-role="none" /></a>
+			<a href="#menu" class="bf-setting-button" data-role="none" /></a>
 		</div><!-- /header -->
 
 		<div data-role="content" class="bf-content">
-			<form id="bf-form-signup">
-				<input class="bf-input-text" type="text" name="email" id="email" value="" placeholder="Email de trabalho" />
-				<input class="bf-input-text" type="text" name="username" id="username" value="" placeholder="Nome do usuário" />
-				<input class="bf-input-text" type="password" name="password" id="password" value="" placeholder="Senha" />
+			<form id="bf-form-signup" class="bf-form">
+				<input class="bf-input-text" type="text" name="email" id="bf-signup-email" value="" placeholder="Email de trabalho" />
+				<input class="bf-input-text" type="text" name="username" id="bf-signup-username" value="" placeholder="Nome do usuário" />
+				<input class="bf-input-text" type="password" name="password" id="bf-signup-password" value="" placeholder="Senha" />
 				<button type="submit" class="bf-button" id="bf-button-signup" data-role="none"></button>
 			</form>
 
@@ -112,7 +112,6 @@
 
 		<div data-role="header" class="bf-header">
 			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse"></a>
-			<a href="#" class="bf-setting-button" data-role="none" /></a>
 		</div><!-- /header -->
 
 		<div data-role="content">
@@ -125,6 +124,235 @@
 	</div>
 
 </div><!-- /page termsofuse -->
+
+
+<!-- Start of #about -->
+<div data-role="page" id="about" class="base">
+
+	<div class="page-wrapper bf-bg-blue">
+
+		<div data-role="header" class="bf-header">
+			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse"></a>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p style="text-align: center">
+				<img src="img/assets/SOBRE_O_PROJETO.png" />
+			</p>
+			<p>Adipisicing fingerstache forage tempor, dreamcatcher brunch blog. Helvetica before they sold out aute Echo Park, anim laboris aliquip placeat trust fund Carles shabby chic. Do Austin flannel laboris, vinyl exercitation pug Williamsburg fingerstache semiotics nesciunt gluten-free selfies master cleanse nihil. Wes Anderson plaid pickled next level cred. Vinyl hoodie ethical skateboard, deep v Pitchfork bitters Marfa ex tousled in DIY scenester next level Odd Future. PBR vegan shabby chic viral, id bespoke consectetur. Letterpress dolor Banksy, brunch irony pariatur labore mollit.</p>
+		</div><!-- /content -->
+
+	</div>
+
+</div><!-- /page about -->
+
+
+<!-- Start of #loggingin -->
+<div data-role="page" id="loggingin" class="base">
+
+	<div class="page-wrapper bf-bg-green">
+
+		<div data-role="header" class="bf-header">
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p style="padding-left: 74px; padding-top: 120px">
+				<img id="checkin-graphic" src="img/assets/CHECK_IN_0.png" />
+			</p>
+		</div><!-- /content -->
+
+	</div>
+
+</div><!-- /page loggingin -->
+
+
+<!-- Start of #logginginerror -->
+<div data-role="page" id="logginginerror" class="base">
+
+	<div class="page-wrapper bf-bg-red">
+
+		<div data-role="header" class="bf-header">
+			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse" pages-back="2"></a>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p style="padding-left: 34px; padding-top: 95px">
+				<img id="checkin-graphic" src="img/assets/TEXT_error_1.png" />
+			</p>
+		</div><!-- /content -->
+
+	</div>
+
+</div><!-- /page logginginerror -->
+
+
+<!-- Start of #logginginerrornoconnection -->
+<div data-role="page" id="logginginerrornoconnection" class="base">
+
+	<div class="page-wrapper bf-bg-red">
+
+		<div data-role="header" class="bf-header">
+			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse" pages-back="2"></a>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p style="padding-left: 34px; padding-top: 95px">
+				<img id="checkin-graphic" src="img/assets/TEXT_error_2.png" />
+			</p>
+		</div><!-- /content -->
+
+	</div>
+
+</div><!-- /page logginginerrornoconnection -->
+
+
+<!-- Start of #ride -->
+<div data-role="page" id="ride" class="base">
+
+	<div class="page-wrapper bf-bg2">
+
+		<div data-role="header" class="bf-header">
+			<a href="#menu" class="bf-setting-button" data-role="none" /></a>
+		</div><!-- /header -->
+
+		<div data-role="content" class="bf-content">
+			<p><span class="bf-username">[[username]]</span> está na bike</p>
+			<p style="margin: 5px 0"><img src="img/assets/TOTAL.png" /></p>
+			<p style="margin: 5px 0"><img src="img/assets/COUNTER.png" /></p>
+			<p style="margin: 10px 0"><img src="img/assets/TEXT_KM_rodados.png" /></p>
+
+			<div class="ui-grid-a" style="margin-top: 0px">
+				<div class="ui-block-a">
+					<a href="#yourride" class="bf-yourride-button"></a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#totalride" class="bf-total-button"></a>
+				</div>
+			</div><!-- /grid-a -->
+
+			<p style="margin: 13px 0"><a href="#" class="bf-share-button"></a></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-logout-button"></a></p>
+		</div><!-- /content -->
+
+		<div class="bf-total-columns">
+			<div class="bf-total-column-1">0</div>
+			<div class="bf-total-column-2">0</div>
+			<div class="bf-total-column-3">0</div>
+			<div class="bf-total-column-4">0</div>
+		</div>
+
+		<div class="bf-footer" style="margin-top: 11px">
+			<a href="http://senores.co/">
+				<img src="img/assets/CREDITS.png" />
+			</a>
+		</div><!-- /footer -->
+
+	</div>
+
+</div><!-- /page #ride -->
+
+
+<!-- Start of #totalride -->
+<div data-role="page" id="totalride" class="base">
+
+	<div class="page-wrapper bf-bg2">
+
+		<div data-role="header" class="bf-header">
+			<a href="#menu" class="bf-setting-button" data-role="none" /></a>
+		</div><!-- /header -->
+
+		<div data-role="content" class="bf-content">
+			<p><span class="bf-username">[[username]]</span> está na bike</p>
+			<p style="margin: 5px 0"><img src="img/assets/TOTAL.png" /></p>
+			<p style="margin: 5px 0"><img src="img/assets/COUNTER.png" /></p>
+			<p style="margin: 10px 0"><img src="img/assets/TEXT_KM_rodados.png" /></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-twitter-button"></a></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-facebook-button"></a></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-cancel-button bf-back-action" data-transition="slide" data-direction="reverse"></a></p>
+		</div><!-- /content -->
+
+		<div class="bf-total-columns">
+			<div class="bf-total-column-1">0</div>
+			<div class="bf-total-column-2">0</div>
+			<div class="bf-total-column-3">0</div>
+			<div class="bf-total-column-4">0</div>
+		</div>
+
+		<div class="bf-footer" style="margin-top: 11px">
+			<a href="http://senores.co/">
+				<img src="img/assets/CREDITS.png" />
+			</a>
+		</div><!-- /footer -->
+
+	</div>
+
+</div><!-- /page #totalride -->
+
+
+<!-- Start of #yourride -->
+<div data-role="page" id="yourride" class="base">
+
+	<div class="page-wrapper bf-bg2">
+
+		<div data-role="header" class="bf-header">
+			<a href="#menu" class="bf-setting-button" data-role="none" /></a>
+		</div><!-- /header -->
+
+		<div data-role="content" class="bf-content">
+			<p><span class="bf-username">[[username]]</span> está na bike</p>
+			<p style="margin: 5px 0"><img src="img/assets/SUA_PEDALADA.png" /></p>
+			<p style="margin: 5px 0"><img src="img/assets/COUNTER.png" /></p>
+			<p style="margin: 10px 0"><img src="img/assets/TEXT_KM_rodados.png" /></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-twitter-button"></a></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-facebook-button"></a></p>
+			<p style="margin: 5px 0"><a href="#" class="bf-cancel-button bf-back-action"></a></p>
+		</div><!-- /content -->
+
+		<div class="bf-ride-columns">
+			<div class="bf-ride-column-1">0</div>
+			<div class="bf-ride-column-2">0</div>
+			<div class="bf-ride-column-3">0</div>
+			<div class="bf-ride-column-4">0</div>
+		</div>
+
+		<div class="bf-footer" style="margin-top: 11px">
+			<a href="http://senores.co/">
+				<img src="img/assets/CREDITS.png" />
+			</a>
+		</div><!-- /footer -->
+
+	</div>
+
+</div><!-- /page #yourride -->
+
+
+<!-- Start of #menu -->
+<div data-role="page" id="menu" class="base">
+
+	<div class="page-wrapper bf-bg-blue">
+
+		<div data-role="header" class="bf-header">
+			<a href="#" class="bf-back-button" data-role="none" data-transition="slide" data-direction="reverse"></a>
+		</div><!-- /header -->
+
+		<div data-role="content" class="bf-content">
+			<p style="margin: 5px 0"><a href="#about" class="bf-about-button"></a></p>
+			<p style="margin: 5px 0"><a href="#termsofuse" class="bf-terms-of-use-button"></a></p>
+			<p style="margin: 5px 0"><a href="http://boxysean.com:3000/connect/twitter" class="bf-twitter-connect-button"></a></p>
+			<p style="margin: 5px 0"><a href="http://boxysean.com:3000/connect/facebook" class="bf-facebook-connect-button"></a></p>
+		</div><!-- /content -->
+
+		<div class="bf-footer" style="margin-top: 104px">
+			<a href="http://senores.co/">
+				<img src="img/assets/CREDITS.png" />
+			</a>
+		</div><!-- /footer -->
+
+	</div>
+
+</div><!-- /page #menu -->
+
+
 
 <script type="text/javascript">
     app.initialize();
