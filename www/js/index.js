@@ -17,8 +17,8 @@
  * under the License.
  */
 
-// var host = 'http://boxysean.com:3000';
-var host = 'http://localhost:3000';
+var host = 'http://boxysean.com:3000';
+// var host = 'http://localhost:3000';
 
 var app = {
     positionQueue: [],
